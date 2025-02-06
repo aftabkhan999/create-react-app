@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # ✅ Step 6: Expose the required port (Adjust if needed)
-EXPOSE 3000
+EXPOSE 3001
 
 # ✅ Step 7: Define the startup command
 CMD ["npm", "start"]
