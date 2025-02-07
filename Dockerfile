@@ -1,5 +1,5 @@
 # Use official Node.js image
-FROM node:16
+FROM node:18
 
 # Set working directory
 WORKDIR /usr/src/app
@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 
 # Update npm to latest
-RUN npm install -g npm@latest
+RUN npm install 
 
 # Install dependencies (handle workspace error)
 RUN npm install --legacy-peer-deps
