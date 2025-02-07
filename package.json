@@ -2,7 +2,7 @@
   "name": "myapp",
   "private": true,
   "workspaces": [
-    "packages/react-error-overlay"
+    "packages/*"
   ],
   "scripts": {
     "build": "cd packages/react-scripts && node bin/react-scripts.js build",
@@ -10,9 +10,9 @@
     "create-react-app": "node tasks/cra.js",
     "e2e": "tasks/e2e-simple.sh",
     "e2e:docker": "tasks/local-test.sh",
-    "postinstall": "npm run build:prod -w react-error-overlay",
+    "postinstall": "npm run build",
     "publish": "tasks/publish.sh",
-    "start": "cd packages/react-scripts && HOST=0.0.0.0 PORT=3003 node bin/react-scripts.js start",
+    "start": "HOST=0.0.0.0 PORT=3003 cd packages/react-scripts && node bin/react-scripts.js start",
     "screencast": "node ./tasks/screencast.js",
     "screencast:error": "svg-term --cast jyu19xGl88FQ3poMY8Hbmfw8y --out screencast-error.svg --window --at 12000 --no-cursor",
     "alex": "alex .",
