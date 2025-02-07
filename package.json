@@ -1,9 +1,11 @@
 {
+  
   "private": true,
   "workspaces": [
-    "packages/*",
-     "packages/react-error-overlay"
-  ],
+    "packages/react-error-overlay"
+  ]
+}
+
   "scripts": {
     "build": "cd packages/react-scripts && node bin/react-scripts.js build",
     "changelog": "lerna-changelog",
