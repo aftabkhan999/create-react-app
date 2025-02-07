@@ -4,21 +4,21 @@ FROM node:20
 # Set working directory
 WORKDIR /usr/src/app
 
-# Copy package.json first for better caching
+# Copy package.json and package-lock.json first
 COPY package.json package-lock.json ./
 
-# Install dependencies (Force install missing ones)
+# Install dependencies first (ensure workspaces are detected)
 RUN npm install --legacy-peer-deps || npm install --force
 
-# Copy all project files
+# Copy the rest of the files
 COPY . .
+
+# Expose port
+EXPOSE 3003
 
 # Set environment variables
 ENV HOST=0.0.0.0
 ENV PORT=3003
-
-# Expose port
-EXPOSE 3003
 
 # Start app
 CMD ["npm", "start"]
