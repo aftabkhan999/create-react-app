@@ -4,16 +4,16 @@ FROM node:20
 # Set working directory
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json first
-COPY package.json package-lock.json ./
-
-# Install dependencies without workspace flag
-RUN npm install --legacy-peer-deps || npm install --force
-
-# Copy all files
+# Copy all files first (to ensure workspaces exist)
 COPY . .
 
-# Build React app (avoid workspace issue)
+# Install npm latest version (avoid workspace errors)
+RUN npm install -g npm@latest
+
+# Install dependencies (Handle workspace issue)
+RUN npm install --legacy-peer-deps || npm install --force
+
+# Build React app (Avoid workspace error)
 RUN npm run build --if-present || echo "Build skipped"
 
 # Expose port
