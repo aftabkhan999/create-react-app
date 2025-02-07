@@ -17,7 +17,7 @@ RUN npm install --legacy-peer-deps || npm install --force
 RUN npm run build --if-present || echo "Build skipped"
 
 # Expose port
-EXPOSE 3000
+EXPOSE 3001
 
 # Start app
 CMD ["npm", "start"]
