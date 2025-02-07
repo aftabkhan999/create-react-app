@@ -1,5 +1,5 @@
 # Use official Node.js image
-FROM node:18
+FROM node:16
 
 # Set working directory
 WORKDIR /usr/src/app
@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 
 # Update npm to latest
-RUN npm install 
+RUN npm install -g npm@latest
 
 # Install dependencies (handle workspace error)
 RUN npm install --legacy-peer-deps
@@ -20,7 +20,7 @@ COPY . .
 RUN npm run build --if-present
 
 # Expose port
-EXPOSE 3001
+EXPOSE 3000
 
 # Start app
 CMD ["npm", "start"]
