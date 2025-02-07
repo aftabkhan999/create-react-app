@@ -1,7 +1,7 @@
 {
   "name": "myapp",
   "workspaces": [
-    "packages/react-error-overlay"
+    "/var/lib/jenkins/workspace/rectapp/packages/react-error-overlay"
   ],
   "scripts": {
     "build": "cd packages/react-scripts && node bin/react-scripts.js build",
