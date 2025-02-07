@@ -1,20 +1,26 @@
-# ✅ Step 1: Use latest stable Node.js version
+# Use official Node.js image
 FROM node:16
 
-# ✅ Step 2: Set the working directory inside the container
+# Set working directory
 WORKDIR /usr/src/app
 
-# ✅ Step 3: Copy package.json and package-lock.json first (for better caching)
+# Copy package.json and package-lock.json first (for better caching)
 COPY package.json package-lock.json ./
 
-# ✅ Step 4: Install dependencies
-RUN npm install
+# Update npm to latest
+RUN npm install -g npm@latest
 
-# ✅ Step 5: Copy all project files (except node_modules)
+# Install dependencies (handle workspace error)
+RUN npm install --legacy-peer-deps
+
+# Copy all files
 COPY . .
 
-# ✅ Step 6: Expose the required port (Adjust if needed)
-EXPOSE 3001
+# Build React app (fix workspace error)
+RUN npm run build --if-present
 
-# ✅ Step 7: Define the startup command
+# Expose port
+EXPOSE 3000
+
+# Start app
 CMD ["npm", "start"]
