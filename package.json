@@ -2,7 +2,7 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "docusaurus/website"
+     "packages/react-error-overlay"
   ],
   "scripts": {
     "build": "cd packages/react-scripts && node bin/react-scripts.js build",
